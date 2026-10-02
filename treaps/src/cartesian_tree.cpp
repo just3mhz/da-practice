@@ -6,10 +6,8 @@ bool contains(const Node* /*root*/, int /*key*/) {
     return false;  // TODO
 }
 
-void split(Node* /*root*/, int /*key*/, Node*& left, Node*& right) {
-    left = nullptr;
-    right = nullptr;
-    // TODO
+SplitResult split(Node* /*root*/, int /*key*/) {
+    return {};  // TODO
 }
 
 Node* merge(Node* left, Node* /*right*/) {

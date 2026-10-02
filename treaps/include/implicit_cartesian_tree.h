@@ -21,8 +21,13 @@ long long sum(const Node* root);
 void update(Node* root);
 void push(Node* root);
 
-// Первые left_count элементов переходят в left, остальные — в right.
-void split(Node* root, int left_count, Node*& left, Node*& right);
+struct SplitResult {
+    Node* left = nullptr;
+    Node* right = nullptr;
+};
+
+// Первые left_count элементов переходят в result.left, остальные — в result.right.
+SplitResult split(Node* root, int left_count);
 Node* merge(Node* left, Node* right);
 
 // Требование: 0 <= index <= size(root).

@@ -12,26 +12,23 @@ treap::Node* make_tree() {
 }
 
 TEST(Ordinary02, SplitByKey) {
-    treap::Node* left = nullptr;
-    treap::Node* right = nullptr;
-
-    treap::split(nullptr, 5, left, right);
-    EXPECT_TRUE(left == nullptr);
-    EXPECT_TRUE(right == nullptr);
+    treap::SplitResult empty = treap::split(nullptr, 5);
+    EXPECT_TRUE(empty.left == nullptr);
+    EXPECT_TRUE(empty.right == nullptr);
 
     treap::Node* root = make_tree();
-    treap::split(root, 5, left, right);
-    EXPECT_EQ(ordinary_values(left), (std::vector<int>{1, 2, 3}));
-    EXPECT_EQ(ordinary_values(right), (std::vector<int>{5, 8}));
-    EXPECT_TRUE(valid_ordinary(left));
-    EXPECT_TRUE(valid_ordinary(right));
-    treap::destroy(left);
-    treap::destroy(right);
+    treap::SplitResult middle = treap::split(root, 5);
+    EXPECT_EQ(ordinary_values(middle.left), (std::vector<int>{1, 2, 3}));
+    EXPECT_EQ(ordinary_values(middle.right), (std::vector<int>{5, 8}));
+    EXPECT_TRUE(valid_ordinary(middle.left));
+    EXPECT_TRUE(valid_ordinary(middle.right));
+    treap::destroy(middle.left);
+    treap::destroy(middle.right);
 
     root = make_tree();
-    treap::split(root, -10, left, right);
-    EXPECT_TRUE(left == nullptr);
-    EXPECT_EQ(ordinary_values(right), (std::vector<int>{1, 2, 3, 5, 8}));
-    treap::destroy(left);
-    treap::destroy(right);
+    treap::SplitResult before_all = treap::split(root, -10);
+    EXPECT_TRUE(before_all.left == nullptr);
+    EXPECT_EQ(ordinary_values(before_all.right), (std::vector<int>{1, 2, 3, 5, 8}));
+    treap::destroy(before_all.left);
+    treap::destroy(before_all.right);
 }

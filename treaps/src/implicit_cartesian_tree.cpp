@@ -18,10 +18,8 @@ void push(Node* /*root*/) {
     // TODO
 }
 
-void split(Node* /*root*/, int /*left_count*/, Node*& left, Node*& right) {
-    left = nullptr;
-    right = nullptr;
-    // TODO
+SplitResult split(Node* /*root*/, int /*left_count*/) {
+    return {};  // TODO
 }
 
 Node* merge(Node* left, Node* /*right*/) {

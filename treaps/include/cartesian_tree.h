@@ -14,9 +14,14 @@ struct Node {
 
 bool contains(const Node* root, int key);
 
+struct SplitResult {
+    Node* left = nullptr;
+    Node* right = nullptr;
+};
+
 // Делит дерево на ключи < key и ключи >= key.
-// Владение всеми узлами переходит к left и right.
-void split(Node* root, int key, Node*& left, Node*& right);
+// Владение всеми узлами переходит к полям результата.
+SplitResult split(Node* root, int key);
 
 // Требование: все ключи left меньше всех ключей right.
 Node* merge(Node* left, Node* right);
