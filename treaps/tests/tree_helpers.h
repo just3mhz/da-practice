@@ -54,7 +54,6 @@ inline void collect_implicit(implicit_treap::Node* root, std::vector<int>& resul
     if (root == nullptr) {
         return;
     }
-    implicit_treap::push(root);
     collect_implicit(root->left, result);
     result.push_back(root->value);
     collect_implicit(root->right, result);
@@ -70,7 +69,6 @@ inline bool valid_implicit_metadata(implicit_treap::Node* root) {
     if (root == nullptr) {
         return true;
     }
-    implicit_treap::push(root);
     if (!valid_implicit_metadata(root->left) || !valid_implicit_metadata(root->right)) {
         return false;
     }

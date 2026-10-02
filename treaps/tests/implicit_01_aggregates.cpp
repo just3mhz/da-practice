@@ -8,7 +8,6 @@ TEST(Implicit01, AggregatesAndDestroy) {
     EXPECT_EQ(root->value, 10);
     EXPECT_EQ(root->priority, 100u);
     EXPECT_EQ(root->subtree_size, 1);
-    EXPECT_FALSE(root->reversed);
 
     root->left = new implicit_treap::Node(-2, 30);
     root->right = new implicit_treap::Node(3, 40);

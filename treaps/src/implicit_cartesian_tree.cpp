@@ -10,10 +10,6 @@ void update(Node* /*root*/) {
     // TODO
 }
 
-void push(Node* /*root*/) {
-    // TODO
-}
-
 SplitResult split(Node* /*root*/, int /*left_count*/) {
     return {};  // TODO
 }
@@ -31,10 +27,6 @@ int at(Node* /*root*/, int /*index*/) {
 }
 
 Node* erase(Node* root, int /*index*/) {
-    return root;  // TODO
-}
-
-Node* reverse(Node* root, int /*left*/, int /*right*/) {
     return root;  // TODO
 }
 

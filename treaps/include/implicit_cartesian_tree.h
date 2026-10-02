@@ -8,7 +8,6 @@ struct Node {
     Node* left = nullptr;
     Node* right = nullptr;
     int subtree_size = 1;
-    bool reversed = false;
 
     Node(int value, unsigned int priority)
         : value(value), priority(priority) {
@@ -17,7 +16,6 @@ struct Node {
 
 int size(const Node* root);
 void update(Node* root);
-void push(Node* root);
 
 struct SplitResult {
     Node* left = nullptr;
@@ -34,9 +32,6 @@ Node* insert(Node* root, int index, int value, unsigned int priority);
 // Требование: 0 <= index < size(root).
 int at(Node* root, int index);
 Node* erase(Node* root, int index);
-
-// Требование: 0 <= left <= right <= size(root).
-Node* reverse(Node* root, int left, int right);
 
 void destroy(Node* root);
 

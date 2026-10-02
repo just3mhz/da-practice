@@ -36,7 +36,6 @@ add_executable(treap_tests
     tests/implicit_03_merge.cpp
     tests/implicit_04_insert_at.cpp
     tests/implicit_05_erase.cpp
-    tests/implicit_06_reverse.cpp
 )
 
 target_include_directories(treap_tests PRIVATE include tests)
