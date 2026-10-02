@@ -82,6 +82,12 @@ inline bool valid_implicit_metadata(implicit_treap::Node* root) {
     if (!valid_implicit_metadata(root->left) || !valid_implicit_metadata(root->right)) {
         return false;
     }
+    if (root->left != nullptr && root->left->priority > root->priority) {
+        return false;
+    }
+    if (root->right != nullptr && root->right->priority > root->priority) {
+        return false;
+    }
     int expected_size = 1;
     long long expected_sum = root->value;
     if (root->left != nullptr) {

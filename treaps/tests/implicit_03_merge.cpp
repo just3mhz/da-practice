@@ -7,7 +7,9 @@ int main() {
 
     implicit_treap::Node* left = new implicit_treap::Node(2, 100);
     left->left = new implicit_treap::Node(1, 30);
-    implicit_treap::Node* right = new implicit_treap::Node(4, 90);
+    // Правый корень имеет больший приоритет: merge должен пройти ветви
+    // выбора и правого, и левого корня.
+    implicit_treap::Node* right = new implicit_treap::Node(4, 110);
     right->left = new implicit_treap::Node(3, 20);
     right->right = new implicit_treap::Node(5, 40);
     recalculate_for_test(left);
