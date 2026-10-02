@@ -1,123 +1,90 @@
 #include "implicit_cartesian_tree.h"
 
-#include <stdexcept>
+namespace implicit_treap {
 
-// TODO: дополните вершину полями value, priority, left, right,
-// subtree_size, subtree_sum и reversed.
-struct ImplicitCartesianTree::Node {
-};
-
-ImplicitCartesianTree::ImplicitCartesianTree(unsigned int seed)
-    : root_(nullptr), random_state_(seed) {
+Node::Node(int node_value, unsigned int node_priority)
+    : value(0),
+      priority(0),
+      left(nullptr),
+      right(nullptr),
+      subtree_size(0),
+      subtree_sum(0),
+      reversed(false) {
+    (void)node_value;
+    (void)node_priority;
+    // TODO: сохранить value, priority и агрегаты одиночной вершины.
 }
 
-ImplicitCartesianTree::~ImplicitCartesianTree() {
-    clear();
-}
-
-bool ImplicitCartesianTree::empty() const {
-    return root_ == nullptr;
-}
-
-int ImplicitCartesianTree::size() const {
-    return node_size(root_);
-}
-
-void ImplicitCartesianTree::insert(int index, int value) {
-    (void)index;
-    (void)value;
-    // TODO
-}
-
-int ImplicitCartesianTree::erase(int index) {
-    (void)index;
+int size(const Node* root) {
+    (void)root;
     return 0;  // TODO
 }
 
-int ImplicitCartesianTree::at(int index) {
-    (void)index;
+long long sum(const Node* root) {
+    (void)root;
     return 0;  // TODO
 }
 
-long long ImplicitCartesianTree::range_sum(int left, int right) {
-    (void)left;
-    (void)right;
-    return 0;  // TODO
-}
-
-void ImplicitCartesianTree::reverse(int left, int right) {
-    (void)left;
-    (void)right;
+void update(Node* root) {
+    (void)root;
     // TODO
 }
 
-std::vector<int> ImplicitCartesianTree::values() {
-    return {};  // TODO
-}
-
-void ImplicitCartesianTree::clear() {
+void push(Node* root) {
+    (void)root;
     // TODO
 }
 
-unsigned int ImplicitCartesianTree::next_priority() {
-    (void)random_state_;
-    return 0;  // TODO: сгенерировать новый псевдослучайный приоритет
-}
-
-int ImplicitCartesianTree::node_size(const Node* tree) {
-    (void)tree;
-    return 0;  // TODO
-}
-
-long long ImplicitCartesianTree::node_sum(const Node* tree) {
-    (void)tree;
-    return 0;  // TODO
-}
-
-void ImplicitCartesianTree::update(Node* tree) {
-    (void)tree;
-    // TODO
-}
-
-void ImplicitCartesianTree::push(Node* tree) {
-    (void)tree;
-    // TODO
-}
-
-void ImplicitCartesianTree::split(Node* tree, int left_count, Node*& left, Node*& right) {
-    (void)tree;
+void split(Node* root, int left_count, Node*& left, Node*& right) {
+    (void)root;
     (void)left_count;
     left = nullptr;
     right = nullptr;
     // TODO
 }
 
-ImplicitCartesianTree::Node* ImplicitCartesianTree::merge(Node* left, Node* right) {
-    (void)left;
+Node* merge(Node* left, Node* right) {
     (void)right;
-    return nullptr;  // TODO
+    return left;  // TODO
 }
 
-void ImplicitCartesianTree::collect_values(Node* tree, std::vector<int>& result) {
-    (void)tree;
-    (void)result;
-    // TODO
-}
-
-void ImplicitCartesianTree::destroy(Node* tree) {
-    (void)tree;
-    // TODO
-}
-
-void ImplicitCartesianTree::check_index(int index, int size) {
+void insert(Node*& root, int index, int value, unsigned int priority) {
+    (void)root;
     (void)index;
-    (void)size;
+    (void)value;
+    (void)priority;
     // TODO
 }
 
-void ImplicitCartesianTree::check_range(int left, int right, int size) {
+int at(Node* root, int index) {
+    (void)root;
+    (void)index;
+    return 0;  // TODO
+}
+
+int erase(Node*& root, int index) {
+    (void)root;
+    (void)index;
+    return 0;  // TODO
+}
+
+long long range_sum(Node*& root, int left, int right) {
+    (void)root;
     (void)left;
     (void)right;
-    (void)size;
+    return 0;  // TODO
+}
+
+void reverse(Node*& root, int left, int right) {
+    (void)root;
+    (void)left;
+    (void)right;
     // TODO
 }
+
+void destroy(Node*& root) {
+    (void)root;
+    // TODO
+}
+
+}  // namespace implicit_treap

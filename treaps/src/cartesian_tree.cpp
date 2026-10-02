@@ -1,81 +1,49 @@
 #include "cartesian_tree.h"
 
-// TODO: дополните вершину полями key, priority, left и right.
-struct CartesianTree::Node {
-};
+namespace treap {
 
-CartesianTree::CartesianTree(unsigned int seed)
-    : root_(nullptr), size_(0), random_state_(seed) {
+Node::Node(int node_key, unsigned int node_priority)
+    : key(0), priority(0), left(nullptr), right(nullptr) {
+    (void)node_key;
+    (void)node_priority;
+    // TODO: сохранить key и priority.
 }
 
-CartesianTree::~CartesianTree() {
-    clear();
-}
-
-bool CartesianTree::empty() const {
-    return root_ == nullptr;
-}
-
-int CartesianTree::size() const {
-    return size_;
-}
-
-bool CartesianTree::contains(int key) const {
+bool contains(const Node* root, int key) {
+    (void)root;
     (void)key;
     return false;  // TODO
 }
 
-bool CartesianTree::insert(int key) {
-    (void)key;
-    return false;  // TODO
-}
-
-bool CartesianTree::erase(int key) {
-    (void)key;
-    return false;  // TODO
-}
-
-std::vector<int> CartesianTree::values() const {
-    return {};  // TODO
-}
-
-void CartesianTree::clear() {
-    // TODO
-}
-
-unsigned int CartesianTree::next_priority() {
-    (void)random_state_;
-    return 0;  // TODO: сгенерировать новый псевдослучайный приоритет
-}
-
-void CartesianTree::split(Node* tree, int key, Node*& left, Node*& right) {
-    (void)tree;
+void split(Node* root, int key, Node*& left, Node*& right) {
+    (void)root;
     (void)key;
     left = nullptr;
     right = nullptr;
     // TODO
 }
 
-CartesianTree::Node* CartesianTree::merge(Node* left, Node* right) {
-    (void)left;
+Node* merge(Node* left, Node* right) {
     (void)right;
-    return nullptr;  // TODO
+    return left;  // TODO
 }
 
-CartesianTree::Node* CartesianTree::erase_node(Node* tree, int key, bool& erased) {
-    (void)tree;
+void insert(Node*& root, int key, unsigned int priority) {
+    (void)root;
     (void)key;
-    erased = false;
-    return nullptr;  // TODO
-}
-
-void CartesianTree::collect_values(const Node* tree, std::vector<int>& result) {
-    (void)tree;
-    (void)result;
+    (void)priority;
     // TODO
 }
 
-void CartesianTree::destroy(Node* tree) {
-    (void)tree;
+bool erase(Node*& root, int key) {
+    (void)root;
+    (void)key;
+    return false;  // TODO
+}
+
+void destroy(Node*& root) {
+    (void)root;
     // TODO
 }
+
+}  // namespace treap

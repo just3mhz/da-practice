@@ -3,7 +3,6 @@
 
 #include <iostream>
 #include <sstream>
-#include <stdexcept>
 #include <string>
 #include <vector>
 
@@ -54,6 +53,15 @@ void expect_vector(const std::vector<Value>& actual, const std::vector<Value>& e
     }
 }
 
+inline int finish() {
+    if (failures == 0) {
+        std::cout << "Stage passed\n";
+        return 0;
+    }
+    std::cerr << failures << " assertion(s) failed\n";
+    return 1;
+}
+
 }  // namespace test
 
 #define EXPECT_TRUE(value) test::expect_true((value), #value, __FILE__, __LINE__)
@@ -61,19 +69,5 @@ void expect_vector(const std::vector<Value>& actual, const std::vector<Value>& e
 #define EXPECT_EQ(actual, expected) test::expect_equal((actual), (expected), #actual " == " #expected, __FILE__, __LINE__)
 #define EXPECT_VECTOR(actual, ...) test::expect_vector((actual), std::vector<int>{__VA_ARGS__}, __FILE__, __LINE__)
 #define EXPECT_EMPTY_VECTOR(actual) test::expect_vector((actual), std::vector<int>{}, __FILE__, __LINE__)
-#define EXPECT_OUT_OF_RANGE(statement)                                      \
-    do {                                                                    \
-        bool caught_expected_exception = false;                             \
-        try {                                                               \
-            statement;                                                      \
-        } catch (const std::out_of_range&) {                                \
-            caught_expected_exception = true;                              \
-        } catch (...) {                                                     \
-        }                                                                   \
-        if (!caught_expected_exception) {                                   \
-            test::fail(__FILE__, __LINE__,                                  \
-                       "expected std::out_of_range: " #statement);          \
-        }                                                                   \
-    } while (false)
 
 #endif
