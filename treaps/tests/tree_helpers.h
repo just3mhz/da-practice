@@ -1,5 +1,4 @@
-#ifndef TREE_HELPERS_H
-#define TREE_HELPERS_H
+#pragma once
 
 #include "cartesian_tree.h"
 #include "implicit_cartesian_tree.h"
@@ -100,5 +99,3 @@ inline bool valid_implicit_metadata(implicit_treap::Node* root) {
     }
     return root->subtree_size == expected_size && root->subtree_sum == expected_sum;
 }
-
-#endif

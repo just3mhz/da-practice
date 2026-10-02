@@ -2,47 +2,29 @@
 
 namespace treap {
 
-Node::Node(int node_key, unsigned int node_priority)
-    : key(0), priority(0), left(nullptr), right(nullptr) {
-    (void)node_key;
-    (void)node_priority;
-    // TODO: сохранить key и priority.
-}
-
-bool contains(const Node* root, int key) {
-    (void)root;
-    (void)key;
+bool contains(const Node* /*root*/, int /*key*/) {
     return false;  // TODO
 }
 
-void split(Node* root, int key, Node*& left, Node*& right) {
-    (void)root;
-    (void)key;
+void split(Node* /*root*/, int /*key*/, Node*& left, Node*& right) {
     left = nullptr;
     right = nullptr;
     // TODO
 }
 
-Node* merge(Node* left, Node* right) {
-    (void)right;
+Node* merge(Node* left, Node* /*right*/) {
     return left;  // TODO
 }
 
-void insert(Node*& root, int key, unsigned int priority) {
-    (void)root;
-    (void)key;
-    (void)priority;
-    // TODO
+Node* insert(Node* root, int /*key*/, unsigned int /*priority*/) {
+    return root;  // TODO
 }
 
-bool erase(Node*& root, int key) {
-    (void)root;
-    (void)key;
-    return false;  // TODO
+Node* erase(Node* root, int /*key*/) {
+    return root;  // TODO
 }
 
-void destroy(Node*& root) {
-    (void)root;
+void destroy(Node* /*root*/) {
     // TODO
 }
 

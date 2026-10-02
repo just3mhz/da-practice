@@ -1,8 +1,8 @@
 #include "implicit_cartesian_tree.h"
-#include "test_support.h"
 #include "tree_helpers.h"
+#include <gtest/gtest.h>
 
-int main() {
+TEST(Implicit03, MergeSequences) {
     EXPECT_TRUE(implicit_treap::merge(nullptr, nullptr) == nullptr);
 
     implicit_treap::Node* left = new implicit_treap::Node(2, 100);
@@ -16,11 +16,9 @@ int main() {
     recalculate_for_test(right);
 
     implicit_treap::Node* root = implicit_treap::merge(left, right);
-    EXPECT_VECTOR(implicit_values(root), 1, 2, 3, 4, 5);
+    EXPECT_EQ(implicit_values(root), (std::vector<int>{1, 2, 3, 4, 5}));
     EXPECT_EQ(implicit_treap::size(root), 5);
     EXPECT_EQ(implicit_treap::sum(root), 15LL);
     EXPECT_TRUE(valid_implicit_metadata(root));
     implicit_treap::destroy(root);
-
-    return test::finish();
 }

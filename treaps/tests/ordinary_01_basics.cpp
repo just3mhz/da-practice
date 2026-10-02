@@ -1,7 +1,7 @@
 #include "cartesian_tree.h"
-#include "test_support.h"
+#include <gtest/gtest.h>
 
-int main() {
+TEST(Ordinary01, NodeContainsAndDestroy) {
     treap::Node* root = new treap::Node(5, 100);
     root->left = new treap::Node(2, 50);
     root->right = new treap::Node(8, 40);
@@ -18,8 +18,4 @@ int main() {
     EXPECT_FALSE(treap::contains(nullptr, 1));
 
     treap::destroy(root);
-    EXPECT_TRUE(root == nullptr);
-    treap::destroy(root);
-
-    return test::finish();
 }

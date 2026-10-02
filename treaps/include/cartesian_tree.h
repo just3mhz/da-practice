@@ -1,15 +1,15 @@
-#ifndef CARTESIAN_TREE_H
-#define CARTESIAN_TREE_H
+#pragma once
 
 namespace treap {
 
 struct Node {
     int key;
     unsigned int priority;
-    Node* left;
-    Node* right;
+    Node* left = nullptr;
+    Node* right = nullptr;
 
-    Node(int key, unsigned int priority);
+    Node(int key, unsigned int priority) : key(key), priority(priority) {
+    }
 };
 
 bool contains(const Node* root, int key);
@@ -22,14 +22,11 @@ void split(Node* root, int key, Node*& left, Node*& right);
 Node* merge(Node* left, Node* right);
 
 // Одинаковые ключи второй раз не добавляются.
-void insert(Node*& root, int key, unsigned int priority);
+Node* insert(Node* root, int key, unsigned int priority);
 
-// Возвращает true, если ключ был найден и удалён.
-bool erase(Node*& root, int key);
+// Если ключа нет, возвращает прежний корень.
+Node* erase(Node* root, int key);
 
-// Удаляет все узлы и записывает в root nullptr.
-void destroy(Node*& root);
+void destroy(Node* root);
 
 }  // namespace treap
-
-#endif

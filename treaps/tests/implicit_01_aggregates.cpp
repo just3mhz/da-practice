@@ -1,7 +1,7 @@
 #include "implicit_cartesian_tree.h"
-#include "test_support.h"
+#include <gtest/gtest.h>
 
-int main() {
+TEST(Implicit01, AggregatesAndDestroy) {
     EXPECT_EQ(implicit_treap::size(nullptr), 0);
     EXPECT_EQ(implicit_treap::sum(nullptr), 0LL);
 
@@ -19,8 +19,4 @@ int main() {
     EXPECT_EQ(implicit_treap::sum(root), 11LL);
 
     implicit_treap::destroy(root);
-    EXPECT_TRUE(root == nullptr);
-    implicit_treap::destroy(root);
-
-    return test::finish();
 }

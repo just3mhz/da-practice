@@ -1,6 +1,6 @@
 #include "cartesian_tree.h"
-#include "test_support.h"
 #include "tree_helpers.h"
+#include <gtest/gtest.h>
 
 treap::Node* make_tree() {
     treap::Node* root = new treap::Node(5, 100);
@@ -11,7 +11,7 @@ treap::Node* make_tree() {
     return root;
 }
 
-int main() {
+TEST(Ordinary02, SplitByKey) {
     treap::Node* left = nullptr;
     treap::Node* right = nullptr;
 
@@ -21,8 +21,8 @@ int main() {
 
     treap::Node* root = make_tree();
     treap::split(root, 5, left, right);
-    EXPECT_VECTOR(ordinary_values(left), 1, 2, 3);
-    EXPECT_VECTOR(ordinary_values(right), 5, 8);
+    EXPECT_EQ(ordinary_values(left), (std::vector<int>{1, 2, 3}));
+    EXPECT_EQ(ordinary_values(right), (std::vector<int>{5, 8}));
     EXPECT_TRUE(valid_ordinary(left));
     EXPECT_TRUE(valid_ordinary(right));
     treap::destroy(left);
@@ -31,9 +31,7 @@ int main() {
     root = make_tree();
     treap::split(root, -10, left, right);
     EXPECT_TRUE(left == nullptr);
-    EXPECT_VECTOR(ordinary_values(right), 1, 2, 3, 5, 8);
+    EXPECT_EQ(ordinary_values(right), (std::vector<int>{1, 2, 3, 5, 8}));
     treap::destroy(left);
     treap::destroy(right);
-
-    return test::finish();
 }

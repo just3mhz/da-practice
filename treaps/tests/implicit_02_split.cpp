@@ -1,6 +1,6 @@
 #include "implicit_cartesian_tree.h"
-#include "test_support.h"
 #include "tree_helpers.h"
+#include <gtest/gtest.h>
 
 implicit_treap::Node* make_sequence() {
     implicit_treap::Node* root = new implicit_treap::Node(20, 100);
@@ -11,7 +11,7 @@ implicit_treap::Node* make_sequence() {
     return root;
 }
 
-int main() {
+TEST(Implicit02, SplitByPosition) {
     implicit_treap::Node* left = nullptr;
     implicit_treap::Node* right = nullptr;
     implicit_treap::split(nullptr, 0, left, right);
@@ -20,8 +20,8 @@ int main() {
 
     implicit_treap::Node* root = make_sequence();
     implicit_treap::split(root, 2, left, right);
-    EXPECT_VECTOR(implicit_values(left), 10, 20);
-    EXPECT_VECTOR(implicit_values(right), 30, 40);
+    EXPECT_EQ(implicit_values(left), (std::vector<int>{10, 20}));
+    EXPECT_EQ(implicit_values(right), (std::vector<int>{30, 40}));
     EXPECT_TRUE(valid_implicit_metadata(left));
     EXPECT_TRUE(valid_implicit_metadata(right));
     implicit_treap::destroy(left);
@@ -30,9 +30,7 @@ int main() {
     root = make_sequence();
     implicit_treap::split(root, 0, left, right);
     EXPECT_TRUE(left == nullptr);
-    EXPECT_VECTOR(implicit_values(right), 10, 20, 30, 40);
+    EXPECT_EQ(implicit_values(right), (std::vector<int>{10, 20, 30, 40}));
     implicit_treap::destroy(left);
     implicit_treap::destroy(right);
-
-    return test::finish();
 }
