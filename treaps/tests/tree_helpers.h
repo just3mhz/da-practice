@@ -47,13 +47,6 @@ inline int recalculate_for_test(implicit_treap::Node* root) {
     int left_size = recalculate_for_test(root->left);
     int right_size = recalculate_for_test(root->right);
     root->subtree_size = 1 + left_size + right_size;
-    root->subtree_sum = root->value;
-    if (root->left != nullptr) {
-        root->subtree_sum += root->left->subtree_sum;
-    }
-    if (root->right != nullptr) {
-        root->subtree_sum += root->right->subtree_sum;
-    }
     return root->subtree_size;
 }
 
@@ -88,14 +81,11 @@ inline bool valid_implicit_metadata(implicit_treap::Node* root) {
         return false;
     }
     int expected_size = 1;
-    long long expected_sum = root->value;
     if (root->left != nullptr) {
         expected_size += root->left->subtree_size;
-        expected_sum += root->left->subtree_sum;
     }
     if (root->right != nullptr) {
         expected_size += root->right->subtree_size;
-        expected_sum += root->right->subtree_sum;
     }
-    return root->subtree_size == expected_size && root->subtree_sum == expected_sum;
+    return root->subtree_size == expected_size;
 }

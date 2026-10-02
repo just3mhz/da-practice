@@ -6,10 +6,6 @@ int size(const Node* /*root*/) {
     return 0;  // TODO
 }
 
-long long sum(const Node* /*root*/) {
-    return 0;  // TODO
-}
-
 void update(Node* /*root*/) {
     // TODO
 }
@@ -36,10 +32,6 @@ int at(Node* /*root*/, int /*index*/) {
 
 Node* erase(Node* root, int /*index*/) {
     return root;  // TODO
-}
-
-long long range_sum(Node* /*root*/, int /*left*/, int /*right*/) {
-    return 0;  // TODO
 }
 
 Node* reverse(Node* root, int /*left*/, int /*right*/) {
