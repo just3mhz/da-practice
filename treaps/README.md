@@ -41,12 +41,17 @@ ctest --test-dir build -R "Ordinary0[1-3]" --output-on-failure
 
 | Этап | Что реализовать | Команда |
 | --- | --- | --- |
-| 1 | `Node`, `size`, `update`, `destroy` | `ctest --test-dir build -R Implicit01` |
+| 1 | `Node`, `size`, `sum`, `update`, `destroy` | `ctest --test-dir build -R Implicit01` |
 | 2 | `split` | `ctest --test-dir build -R Implicit02` |
 | 3 | `merge` | `ctest --test-dir build -R Implicit03` |
 | 4 | `insert`, `at` | `ctest --test-dir build -R Implicit04` |
 | 5 | `erase` | `ctest --test-dir build -R Implicit05` |
+| 6 | `range_sum` | `ctest --test-dir build -R Implicit06` |
+| 7 | `push`, `reverse` | `ctest --test-dir build -R Implicit07` |
+| 8 | `push`, `range_add` | `ctest --test-dir build -R Implicit08` |
+
 Все индексы в тестах корректны. Отрезки полуинтервальные: `[left, right)`. Например, `[1, 4)` содержит позиции `1`, `2`, `3`.
+Значения элементов и накопленные прибавления должны помещаться в `int`, суммы — в `long long`.
 
 ## Владение памятью
 
@@ -63,3 +68,16 @@ cmake -S . -B build-asan -DENABLE_SANITIZERS=ON
 cmake --build build-asan
 ctest --test-dir build-asan --output-on-failure
 ```
+
+## Покрытие тестами
+
+Покрытие исходников из каталога `src` можно собрать с помощью Clang и LLVM:
+
+```bash
+cmake -S . -B build-coverage -DENABLE_COVERAGE=ON
+cmake --build build-coverage --target coverage
+```
+
+Команда печатает сводку в терминал и создаёт HTML-отчёт в
+`build-coverage/coverage/html/index.html`. Режимы покрытия и санитайзеров
+включаются в разных каталогах сборки.

@@ -8,14 +8,19 @@ struct Node {
     Node* left = nullptr;
     Node* right = nullptr;
     int subtree_size = 1;
+    long long subtree_sum;
+    bool reversed = false;
+    int lazy_add = 0;
 
     Node(int value, unsigned int priority)
-        : value(value), priority(priority) {
+        : value(value), priority(priority), subtree_sum(value) {
     }
 };
 
 int size(const Node* root);
+long long sum(const Node* root);
 void update(Node* root);
+void push(Node* root);
 
 struct SplitResult {
     Node* left = nullptr;
@@ -32,6 +37,11 @@ Node* insert(Node* root, int index, int value, unsigned int priority);
 // Требование: 0 <= index < size(root).
 int at(Node* root, int index);
 Node* erase(Node* root, int index);
+
+// Требование: 0 <= left <= right <= size(root).
+long long range_sum(Node* root, int left, int right);
+Node* reverse(Node* root, int left, int right);
+Node* range_add(Node* root, int left, int right, int delta);
 
 void destroy(Node* root);
 

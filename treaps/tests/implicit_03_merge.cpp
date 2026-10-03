@@ -18,6 +18,7 @@ TEST(Implicit03, MergeSequences) {
     implicit_treap::Node* root = implicit_treap::merge(left, right);
     EXPECT_EQ(implicit_values(root), (std::vector<int>{1, 2, 3, 4, 5}));
     EXPECT_EQ(implicit_treap::size(root), 5);
+    EXPECT_EQ(implicit_treap::sum(root), 15LL);
     EXPECT_TRUE(valid_implicit_metadata(root));
     implicit_treap::destroy(root);
 }
