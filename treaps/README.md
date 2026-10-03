@@ -6,6 +6,8 @@
 
 ## Сборка
 
+Проект использует стандарт C++20.
+
 ```bash
 cmake -S . -B build
 cmake --build build
