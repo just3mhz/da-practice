@@ -2,4 +2,7 @@ build/
 build-*/
 */build/
 */build-*/
+.vscode
+.cache
+.gitignore
 .DS_Store
